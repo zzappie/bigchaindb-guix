@@ -307,17 +307,16 @@ from your child processes as well!")
 (define-public bigchaindb-guix
   (package
     (name "bigchaindb-guix")
-    ;; NOTE not released yet
-    (version "XXX")
+    (version "0.1.0")
     (source (origin
               (method git-fetch)
               (uri (git-reference
-                    (url "https://github.com/ipdb/bigchaindb-guix.git")
+                    ;; (url "https://github.com/ipdb/bigchaindb-guix")
+                    (url "/home/zap/rnd/bigchaindb-guix")
                     (commit (string-append "v" version))))
               (file-name (git-file-name name version))
               (sha256
                (base32
-                ;; NOTE not released yet
                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"))))
     (build-system gnu-build-system)
     (arguments
@@ -330,8 +329,8 @@ from your child processes as well!")
                 (format #f
                         "~a/lib/guile/3.0/extensions/libtendermintinit"
                         (assoc-ref outputs "out"))))
-             #t)))))
-
+             #t)))
+       #:tests? #f))
     (native-inputs
      `(("autoconf" ,autoconf)
        ("automake" ,automake)
